@@ -2,7 +2,7 @@ const express=require("express")
 const app=express()
 const cors=require("cors")
 const mongoose=require('mongoose')
-
+mongoose.set("strictQuery","true")
 app.use(express.json())
 app.use(cors())
 
@@ -11,6 +11,7 @@ require('dotenv').config()
 mongoose.connect(process.env.DBURL)
     console.log("db connected")
 app.get('/',(req,res)=>{
+    res.setHeader("Access-Controller-Credentials","true"
     res.send('hello ')
 })
 
